@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class JobTest {
 
-    Job test_job1, test_job2, test_job3, test_job4;
+    Job test_job1, test_job2, test_job3, test_job4, test_job5;
     Employer test_employer;
     Location test_location;
     PositionType test_positionType;
@@ -25,6 +25,7 @@ public class JobTest {
         test_coreCompetency = new CoreCompetency("Persistence");
         test_job3 = new Job("Product tester", test_employer, test_location, test_positionType, test_coreCompetency);
         test_job4 = new Job("Product tester", test_employer, test_location, test_positionType, test_coreCompetency);
+        test_job5 = new Job("", test_employer, test_location, test_positionType, test_coreCompetency);
     }
 
     @Test
@@ -50,5 +51,33 @@ public class JobTest {
     @Test
     public void testJobsForEquality() {
         assertFalse(test_job3.equals(test_job4));
+    }
+
+    @Test
+    public void testToStringContainsBlankLineBeforeAndAfter() {
+        String testString = test_job1.toString();
+        assertTrue(testString.startsWith("\n"));
+        assertTrue(testString.endsWith("\n"));
+    }
+
+    @Test
+    public void testToStringPutsFieldLabelsAndDataOnSeperateLines() {
+        String testString = test_job1.toString();
+        assertTrue(testString.contains("Name: My job\n"));
+        assertTrue(testString.contains("Employer: 44BSquared\n"));
+        assertTrue(testString.contains("Location: Kansas City\n"));
+        assertTrue(testString.contains("Position Type: Recruiter\n"));
+        assertTrue(testString.contains("Core Competency: Motivated to excel.\n"));
+    }
+
+    @Test
+    public void testToStringEmptyFieldsMessage() {
+        String testString = test_job5.toString();
+        assertTrue(testString.contains("Data not available."));
+    }
+
+    @Test
+    public void testToStringHasIdOnlyMessage() {
+        assertEquals("OOPS! This job does not seem to exist.", test_job2.toString());
     }
 }
