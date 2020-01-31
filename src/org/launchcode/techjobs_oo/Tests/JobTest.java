@@ -73,7 +73,7 @@ public class JobTest {
     @Test
     public void testToStringEmptyFieldsMessage() {
         String testString = test_job5.toString();
-        assertTrue(testString.contains("Data not available."));
+        assertTrue(testString.contains("Data not available"));
     }
 
     @Test

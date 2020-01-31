@@ -40,22 +40,23 @@ public class Job {
         }
 
         if(this.getName().equals("")){
-            this.setName("Data not available.");
+            this.setName("Data not available");
         }
         if(this.getEmployer().getValue().equals("")){
-            this.setEmployer(new Employer("Data not available."));
+            this.setEmployer(new Employer("Data not available"));
         }
         if(this.getLocation().getValue().equals("")){
-            this.setLocation(new Location("Data not available."));
+            this.setLocation(new Location("Data not available"));
         }
         if(this.getPositionType().getValue().equals("")){
-            this.setPositionType(new PositionType("Data not available."));
+            this.setPositionType(new PositionType("Data not available"));
         }
         if(this.getCoreCompetency().getValue().equals("")){
-            this.setCoreCompetency(new CoreCompetency("Data not available."));
+            this.setCoreCompetency(new CoreCompetency("Data not available"));
         }
 
         return "\n" +
+                "ID: " + id + "\n" +
                 "Name: " + name + "\n" +
                 "Employer: " + employer + "\n" +
                 "Location: " + location + "\n" +
